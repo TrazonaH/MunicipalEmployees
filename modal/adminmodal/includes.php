@@ -75,6 +75,7 @@
    include('modal/adminmodal/employees/salaryIncrement.php');
    include('modal/adminmodal/employees/loyaltyBonus.php');
    include('modal/adminmodal/employees/StepIncrement.php');
-
+   include('modal/adminmodal/displays/cos.php');
+   include('modal/adminmodal/displays/jo.php');
     ?>
         

@@ -17,6 +17,8 @@ var app = new Vue({
         loyaltyBunoses: [],
         loyaltyBunos: {},
         salaryIncremented: [],
+        cos: [],
+        jo: [],
         
     },      
     computed:{
@@ -24,6 +26,7 @@ var app = new Vue({
             if(this.searchQuery){
             return this.employees.filter((item)=>{
                 return this.searchQuery.toLowerCase().split(' ').every(v => item.fname.toLowerCase().includes(v))
+                // return this.searchQuery.toLowerCase().split(' ').every(v => item.endNum.includes(v))
             })
             }else{
                 return this.employees;
@@ -36,6 +39,8 @@ var app = new Vue({
         this.showNextMonth();
         this.displayLoyaltyBonus();
         this.displaySalaryIncremented();
+        this.displaycos();
+        this.displayjo();
     },
     methods:{
         //Employees Modules
@@ -72,7 +77,6 @@ var app = new Vue({
             })
         },
         displayLoyaltyBonus: function(){
-            console.log("called");
             const data = new FormData(); 
             const vue = this;
             data.append("fn","displayLoyaltyBonus");
@@ -83,7 +87,6 @@ var app = new Vue({
             })
         },
         displaySalaryIncremented: function(){
-            console.log("called");
             const data = new FormData(); 
             const vue = this;
             data.append("fn","displaySalaryIncremented");
@@ -91,6 +94,24 @@ var app = new Vue({
             .then(function (r){
                 console.log('Incremented People', r.data);
                 vue.salaryIncremented = r.data;
+            })
+        },
+        displaycos: function(){
+            const data = new FormData(); 
+            const vue = this;
+            data.append("fn","displaycos");
+            axios.post('api/employees_api.php',data)
+            .then(function (r){
+                vue.cos = r.data;
+            })
+        },
+        displayjo: function(){
+            const data = new FormData(); 
+            const vue = this;
+            data.append("fn","displayjo");
+            axios.post('api/employees_api.php',data)
+            .then(function (r){
+                vue.jo = r.data;
             })
         },
         addEmployee: function(e){

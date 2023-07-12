@@ -141,7 +141,18 @@
 			<script src="assets/dashboard/api/datatable/jquery.dataTables.min.js"></script>
 			<script src="assets/dashboard/js/script.bundle.js"></script>
 			<script src='assets/js/script.js' type="module"></script>
-			<script src='assets/js/sample.js' type="module"></script>
+			<!-- <script src="https://cdn.jsdelivr.net/npm/tableexport@5.0.0/dist/js/tableexport.min.js"></script>
+
+			<script src="assets/js/export.js"></script>
+			<script>
+				new Vue({
+				el: '#app',
+				components: {
+					'my-component': window.export.default
+				}
+				});
+			</script> -->
+			<!-- <script src='assets/js/sample.js' type="module"></script> -->
 
 			</body>
 			<!--end::Body-->

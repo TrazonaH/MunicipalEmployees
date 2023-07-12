@@ -20,6 +20,30 @@ function displayEmployees()
     }
     echo json_encode($data);
 }
+function displaycos()
+{
+    global $con;
+    $query = $con->prepare("SELECT * FROM employees WHERE type=1 AND status!=2");
+    $query->execute();
+    $result = $query->get_result();
+    $data = array();
+    while ($r = $result->fetch_array()) {
+        $data[] = $r;
+    }
+    echo json_encode($data);
+}
+function displayjo()
+{
+    global $con;
+    $query = $con->prepare("SELECT * FROM employees WHERE type=2 AND status!=2  ORDER BY lname ASC");
+    $query->execute();
+    $result = $query->get_result();
+    $data = array();
+    while ($r = $result->fetch_array()) {
+        $data[] = $r;
+    }
+    echo json_encode($data);
+}
 function addEmployee(){
     echo "called";
     global $con;
@@ -65,17 +89,18 @@ function editEmployee()
     $regularity = $_POST['regularity'];
     $casualty = $_POST['casualty'];
     $rank = $_POST['rank'];
+    $type = $_POST['type'];
     $dir = 'uploads/';
     $img = $dir . $_FILES["eimg"]["name"];
     move_uploaded_file($_FILES["eimg"]['tmp_name'], $img);
 
         if ($img != "uploads/") {
-            $query = $con->prepare('UPDATE employees SET fname=?, lname=?, m_i=?, gender=?, id_number=?, endNum=?, birthdate=?, address=?, date_of_employment=?,department=?,img=?,regularity=?,casualty=?,rank=? WHERE emp_id=?');
-            $query->bind_param('ssssiissssssssi', $fname, $lname, $m_initial, $gender, $id_number, $endNum, $birthdate, $address, $date_employed, $department,$img,$regularity,$casualty,$rank, $id);
+            $query = $con->prepare('UPDATE employees SET fname=?, lname=?, m_i=?, gender=?, id_number=?, endNum=?, birthdate=?, address=?, date_of_employment=?,department=?,img=?,regularity=?,casualty=?,rank=?,type=? WHERE emp_id=?');
+            $query->bind_param('ssssiisssssssssi', $fname, $lname, $m_initial, $gender, $id_number, $endNum, $birthdate, $address, $date_employed, $department,$img,$regularity,$casualty,$rank,$type,$id);
             $query->execute();
         } else {
-            $query = $con->prepare('UPDATE employees SET fname=?, lname=?, m_i=?, gender=?, id_number=?, endNum=?, birthdate=?, address=?, date_of_employment=?,department=?,regularity=?,casualty=?,rank=? WHERE emp_id=?');
-            $query->bind_param('ssssiisssssssi', $fname, $lname, $m_initial, $gender, $id_number, $endNum, $birthdate, $address, $date_employed, $department,$regularity,$casualty,$rank, $id);
+            $query = $con->prepare('UPDATE employees SET fname=?, lname=?, m_i=?, gender=?, id_number=?, endNum=?, birthdate=?, address=?, date_of_employment=?,department=?,regularity=?,casualty=?,rank=?,type=? WHERE emp_id=?');
+            $query->bind_param('ssssiissssssssi', $fname, $lname, $m_initial, $gender, $id_number, $endNum, $birthdate, $address, $date_employed, $department,$regularity,$casualty,$rank,$type, $id);
             $query->execute();
         }
     }

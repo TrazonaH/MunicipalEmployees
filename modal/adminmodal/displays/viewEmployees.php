@@ -12,7 +12,7 @@
  			<div class="col-2"><button data-toggle='modal' data-target='#addEmployeesModal' class="btn btn-success">New Employee</button></div>
  		</div>
  		<div class="modal-body table-responsive ">
- 			<table class="table table-bordered ">
+ 			<table class="table table-bordered " ref="viewEmployee">
  				<thead class="kt-table-thead text-body">
  					<tr>
  						<th class="kt-table-cell text-center"><b>No.</b></th>
@@ -25,6 +25,7 @@
                          <th class="kt-table-cell text-center"><b>Birthdate</b></th>
                          <th class="kt-table-cell text-center"><b>Date of Employment</b></th>
 						 <th class="kt-table-cell text-center"><b>Department</b></th>
+						 <th class="kt-table-cell text-center"><b>Type of Employee</b></th>
                          <th class="kt-table-cell text-center"><b>Options</b></th>
  					</tr>
  				</thead>
@@ -40,6 +41,7 @@
                         <td class="kt-table-cell text-center">{{ employee.birthdate}}</td>
                         <td class="kt-table-cell text-center">{{ employee.date_of_employment }}</td>
 						<td class="kt-table-cell text-center">{{ employee.department }}</td>
+						<td class="kt-table-cell text-center">{{ employee.type }}</td>
  						<td class="kt-table-cell text-center">
 						 	<span><i class="fa-solid fa-trash" style="color: red;" @click='deleteEmployee(employee.emp_id)'></i></span>
  							<span><i class="fa-solid fa-pen-to-square" style="color: #1b470b;" @click='getEmployeesById(JSON.parse(JSON.stringify(employee)))' data-target='#editEmployeesModal' data-toggle='modal'></i></span>
@@ -50,6 +52,7 @@
  					</tr>
  				</tbody>
  			</table>
+			<button onclick="exportToExcel()">Export to Excel</button>
  		</div>
  	</div>
  </div>

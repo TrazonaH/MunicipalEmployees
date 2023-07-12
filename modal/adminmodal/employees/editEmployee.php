@@ -141,7 +141,7 @@
                                 <option value="Tourism">Tourism</option>
                                 <option value="HRMO">HR</option>
                                 <option value="DRRM">DRRM</option>
-                                <option value="Vice Mayor's Office">Vice Mayor's SB Office</option>
+                                <option value="Vice Mayors Office">Vice Mayor's SB Office</option>
                                 <option value="MPDC">MPDC</option>
                                 <option value="Engineering">Engineering</option>
                                 <option value="Budget">Budget</option>
@@ -185,6 +185,25 @@
                         <div class="col"><input type="text" class="form-control form-control-lg" name="rank" v-model="employee.rank"  ></div>
                     </div>
                 </div>
+                <div class="col">
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label for="egender" class="col-form-label">
+                            <b><h3>Type of Employee:</h3></b>
+                        </label>
+                        
+                        <div class="col">
+                            <select name='type' class="form-control form-control-lg" v-model="employee.type" >
+                                <option value="">Select Type...</option>
+                                <option value="1">COS</option>
+                                <option value="2">JOB ORDER</option>
+                            </select>    
+                            <!-- <input type="text" class="form-control form-control-lg" name="type" v-model="employee.type"  > -->
+                        </div>
+                    </div>
+                </div>
+            </div><br>
+
+            <div class="row">
                 <div class="col">
                     <div class="form-group mx-sm-3 mb-2">
                         <label for="egender" class="col-form-label">
