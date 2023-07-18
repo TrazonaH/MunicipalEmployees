@@ -47,33 +47,6 @@
                     </div>
                 </div>
             </div>
-<!-- 
-            <div class="row">
-                <div class="col">
-                    <div class="form-group mx-sm-3 mb-2">
-                    <label for="fname" class="col-form-label"><b>
-                        <h3>First Name:</h3>
-                        </b></label>
-                        <input type="text" class="form-control form-control-lg" name="fname" placeholder="First Name:" required>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group mx-sm-3 mb-2">
-                    <label for="lname" class="col-form-label"><b>
-                        <h3>Last Name:</h3>
-                        </b></label>
-                        <input type="text" class="form-control form-control-lg" name="lname" placeholder="Last Name:" required>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group mx-sm-3 mb-2">
-                    <label for="m_initial" class="col-form-label"><b>
-                        <h3>Middle Initial:</h3>
-                        </b></label>
-                        <input type="text" class="form-control form-control-lg" name="m_initial" placeholder="Middle Initial:" >
-                    </div>
-                </div>
-            </div><br> -->
 
             <hr style="width:100%;text-align:left;margin-left:0">
             <div class="row">

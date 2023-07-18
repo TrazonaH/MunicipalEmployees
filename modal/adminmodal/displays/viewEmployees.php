@@ -52,7 +52,7 @@
  					</tr>
  				</tbody>
  			</table>
-			<button onclick="exportToExcel()">Export to Excel</button>
+			<button @click="exportToExcel">Export to Excel</button>
  		</div>
  	</div>
  </div>

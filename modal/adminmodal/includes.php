@@ -1,43 +1,11 @@
     <?php
-    // //Users modules
-    // include('modal/adminmodal/users/addUser.php');
-    // include('modal/adminmodal/users/viewUsers.php');
-    // include('modal/adminmodal/users/editUser.php');
-    // include('modal/adminmodal/users/archiveEmployees.php');
 
-    // //products modules
-    // include('modal/adminmodal/products/addProductNew.php');
-    // include('modal/adminmodal/products/editProductNew.php');
-    // include('modal/adminmodal/products/viewProductsNew.php');
-    // include('modal/adminmodal/products/archiveProducts.php');
-    // include('modal/adminmodal/products/editProductsSupplies.php');
-    // include('modal/adminmodal/products/editSpecificAddedSupplies.php');
-    // include('modal/adminmodal/products/purchaseProduct.php');
-    // include('modal/adminmodal/products/Newpurchase.php');
-    // include('modal/adminmodal/products/deliveries.php');
-    // include('modal/adminmodal/products/check_received.php');
-
-
-    // //expenses modules
-    // include('modal/adminmodal/expenses/addExpenses.php');
-    // include('modal/adminmodal/expenses/editExpenses.php');
-    // include('modal/adminmodal/expenses/viewExpenses.php');
-    // include('modal/adminmodal/expenses/archiveExpenses.php');
-    // include('modal/adminmodal/expenses/addtoSupply.php');
-    // include('modal/adminmodal/expenses/updateStock.php');
-    // include('modal/adminmodal/expenses/expensesDetails.php');
-    // include('modal/adminmodal/expenses/editMain.php');
-    // include('modal/adminmodal/expenses/expensesTable.php');
-
-   //employees Modules
-   
    include('modal/adminmodal/employees/addEmployee.php');
    include('modal/adminmodal/employees/editEmployee.php');
    include('modal/adminmodal/employees/employeeDetails.php');
    include('modal/adminmodal/employees/viewMonthly.php');
    include('modal/adminmodal/employees/WeeklyNextMonth.php');
    include('modal/adminmodal/employees/TodayBirthday.php');
-
    include('modal/adminmodal/displays/viewEmployees.php');
    include('modal/adminmodal/displays/Accounting.php');
    include('modal/adminmodal/displays/Assessor.php');
@@ -77,5 +45,11 @@
    include('modal/adminmodal/employees/StepIncrement.php');
    include('modal/adminmodal/displays/cos.php');
    include('modal/adminmodal/displays/jo.php');
+
+
+   include('modal/adminmodal/emergency/updateemergency.php');
+   include('modal/adminmodal/emergency/addemergency.php');
+   include('modal/adminmodal/emergency/HotlineNumbers.php');
+
     ?>
         

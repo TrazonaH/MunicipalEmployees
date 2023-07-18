@@ -21,15 +21,16 @@
 
 
 				</li>
-				<li class="nav-item" >
-					<a class="nav-link" data-toggle="collapse" href="javascript:void(0)" data-target="#purchase" role="button" aria-expanded="false" aria-controls="catalog">
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="collapse" href="javascript:void(0)" data-target="#employee" role="button" aria-expanded="false" aria-controls="catalog">
 						<span class="svg-icon nav-icon">
+						<!-- <i class="fa-sharp fa-solid fa-trophy"></i> -->
 						<i class="fa-solid fa-users fa-xl" style="color: #11e815;"></i>
 						</span>
-						<span class="nav-text" style="font-size: 18px;">Employees</span>
+						<span class="nav-text" style="font-size: 18px;">Employee</span>
 						<i class="fas fa-chevron-right fa-rotate-90"></i>
 					</a>
-					<div class="collapse nav-collapse" id="purchase" data-parent="#accordion">
+					<div class="collapse nav-collapse" id="employee" data-parent="#accordion">
 						<div id="accordion1">
 							<ul class="nav flex-column">
 								<li class="nav-item">
@@ -62,6 +63,23 @@
 										<span class="nav-text">Job Order</span>
 									</a>
 								</li>
+							</ul>
+						</div>
+					</div>
+				</li>
+				<li class="nav-item" >
+					<a class="nav-link" data-toggle="collapse" href="javascript:void(0)" data-target="#department" role="button" aria-expanded="false" aria-controls="catalog">
+						<span class="svg-icon nav-icon">
+						
+						<i class="fa-solid fa-sitemap fa-xl"></i>
+						</span>
+						<span class="nav-text" style="font-size: 18px;">Departments</span>
+						<i class="fas fa-chevron-right fa-rotate-90"></i>
+					</a>
+					<div class="collapse nav-collapse" id="department" data-parent="#accordion">
+						<div id="accordion1">
+							<ul class="nav flex-column">
+								
 								<li class="nav-item">
 									<a href="javascript:void(0)" @click="pageName = 'MayorsOffice'" class=" nav-link sub-nav-link">
 										<span class="svg-icon nav-icon d-flex justify-content-center">
@@ -468,7 +486,30 @@
 						</div>
 					</div>
 				</li>
-
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="collapse" href="javascript:void(0)" data-target="#emergency" role="button" aria-expanded="false" aria-controls="catalog">
+						<span class="svg-icon nav-icon">
+						<!-- <i class="fa-sharp fa-solid fa-trophy"></i> -->
+						<i class="fa-solid fa-phone fa-xl" style="color: #eb0f0f;"></i>
+						</span>
+						<span class="nav-text" style="font-size: 18px;">Emergency Contact</span>
+						<i class="fas fa-chevron-right fa-rotate-90"></i>
+					</a>
+					<div class="collapse nav-collapse" id="emergency" data-parent="#accordion">
+						<div id="accordion1">
+							<ul class="nav flex-column">
+								<li class="nav-item" >
+									<a href="javascript:void(0)" @click="pageName = 'emergency'" class="nav-link sub-nav-link">
+										<span class="svg-icon nav-icon">
+										<i class="fa-solid fa-phone fa-xl" style="color: #eb0f0f;"></i>
+										</span>
+										<span class="nav-text" >Hotline Numbers</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</li>
 				
 				
 

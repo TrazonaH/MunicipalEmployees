@@ -141,6 +141,13 @@
 			<script src="assets/dashboard/api/datatable/jquery.dataTables.min.js"></script>
 			<script src="assets/dashboard/js/script.bundle.js"></script>
 			<script src='assets/js/script.js' type="module"></script>
+
+			<!-- added for the excel file extraction -->
+			<script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script>
+  			<script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+			  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script>
+
+
 			<!-- <script src="https://cdn.jsdelivr.net/npm/tableexport@5.0.0/dist/js/tableexport.min.js"></script>
 
 			<script src="assets/js/export.js"></script>

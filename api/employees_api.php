@@ -238,4 +238,43 @@ function displaySalaryIncremented(){
     echo json_encode($incrementedEmp);
 }
 
+
+function addEmergency(){
+    global $con;
+    $department = $_POST['department'];
+    $number = $_POST['number'];
+    $query = $con->prepare('INSERT INTO emergencynum(department,number) VALUES(?,?)');
+    $query->bind_param('ss', $department, $number);
+    $query->execute();
+    echo 1;
+}
+function displayEmergencyHotline(){
+    global $con;
+    $query = $con->prepare("SELECT * FROM emergencynum");
+    $query->execute();
+    $result = $query->get_result();
+    $data = array();
+    while ($r = $result->fetch_array()) {
+        $data[] = $r;
+    }
+    echo json_encode($data);
+}
+function deleteEmergency(){
+    global $con;
+    $em_id = $_POST['em_id'];
+    $query = $con->prepare('UPDATE emergencynum SET status=2 WHERE em_id = ?');
+    $query->bind_param('i', $em_id);
+    $query->execute();
+}
+function editEmergency(){
+    global $con;
+    $id = $_POST['em_id'];
+    $department = $_POST['edepartment'];
+    $number = $_POST['enumber'];
+
+    $query = $con->prepare('UPDATE emergencynum SET department=?, number=? WHERE em_id=?');
+    $query->bind_param('ssi', $department, $number,$id);
+    $query->execute();
+}
+
 ?>
