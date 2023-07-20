@@ -6,35 +6,46 @@ include('header/adminheader.php');
 	<!--begin::Entry-->
 	<div class="d-flex flex-column-fluid" v-if="pageName == 'default'">
 		<div class="container-fluid">
-			<div class="row">
-				<div class="col mx-2" style="background-color: yellow; border-radius: 10px; padding: 10px; ">
+			<div class="row" style="padding: 10px;">
+				<div class="col mx-2" style="background-color: yellow; border-radius: 10px;">
 				<h1 class="text-center" style="background-color: white; margin-top: 5px; border-radius: 10px; padding: 5px;"><b>Regular</b></h1>
 				<div class="text-center" style="background-color: white; margin-top: 5px; border-radius: 10px; padding: 5px;">
-				{{}}<br> Employees
+					<div style="font-size: 50px;">
+					{{ regularCount }}
+					</div>
+					Employees
 				</div>
 				</div>
 				<div class="col mx-2" style="background-color: red; border-radius: 10px;">
 				<h1 class="text-center" style="background-color: white; margin-top: 5px; border-radius: 10px; padding: 5px;"><b>Casual</b></h1>
 				<div class="text-center" style="background-color: white; margin-top: 5px; border-radius: 10px; padding: 5px;">
-				{{}}<br> Employees
+					<div style="font-size: 50px;">
+					{{casualCount}}
+					</div>Employees
 				</div>
 				</div>
 				<div class="col mx-2" style="background-color: orange; border-radius: 10px;">
-				<h1 class="text-center" style="background-color: white; margin-top: 5px; border-radius: 10px; padding: 5px;"><b>Job Order</b></h1>
-				<div class="text-center" style="background-color: white; margin-top: 5px; border-radius: 10px; padding: 5px;">
-				{{}}<br> Employees
-				</div>
+					<h1 class="text-center" style="background-color: white; margin-top: 5px; border-radius: 10px; padding: 5px;"><b>Job Order</b></h1>
+					<div class="text-center" style="background-color: white; margin-top: 5px; border-radius: 10px; padding: 5px;">
+						<div style="font-size: 50px;">
+						{{joCount}}
+						</div> Employees
+					</div>
 				</div>
 				<div class="col mx-2" style="background-color: blue; border-radius: 10px;">
 				<h1 class="text-center" style="background-color: white; margin-top: 5px; border-radius: 10px; padding: 5px;"><b>COS</b></h1>
-				<div class="text-center" style="background-color: white; margin-top: 5px; border-radius: 10px; padding: 5px;">
-				{{}}<br> Employees
+				<div class="text-center" style="background-color: white; margin: 5px; border-radius: 10px; padding: 5px;">
+					<div style="font-size: 50px;">
+						{{cosCount}}
+					</div>Employees
 				</div>
 				</div>
 				<div class="col mx-2" style="background-color: green; border-radius: 10px;">
 				<h1 class="text-center" style="background-color: white; margin-top: 5px; border-radius: 10px; padding: 5px;"><b>Consultant</b></h1>
 				<div class="text-center" style="background-color: white; margin-top: 5px; border-radius: 10px; padding: 5px;">
-				{{}}<br> Employees
+					<div style="font-size: 50px;">
+						{{consultantCount}}
+					</div>Employees
 				</div>
 				</div>
 			</div><br><br>
@@ -80,6 +91,9 @@ include('header/adminheader.php');
 						<td class="kt-table-cell text-center">
 							<div v-if="employee.type == 1">COS</div>
 							<div v-if="employee.type == 2">JOB ORDER</div>
+							<div v-if="employee.type == 3">REGULAR</div>
+							<div v-if="employee.type == 4">CASUAL</div>
+							<div v-if="employee.type == 5">CONSULTANT</div>
 							<!-- {{ employee.type }} -->
 						</td>
  						<td class="kt-table-cell text-center">

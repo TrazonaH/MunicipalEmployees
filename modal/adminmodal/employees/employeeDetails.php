@@ -37,8 +37,30 @@
                 <div class="col text-right text-success"><b><h3>Date of Employment: </h3></b></div>
                 <div class="col"> <h4>{{employee.date_of_employment}}</h4></div>
             </div>
-            
-
+            <div class="row">
+                <div class="col text-right text-success"><b><h3>Date of Casual: </h3></b></div>
+                <div class="col"> <h4>{{employee.casualty}}</h4></div>
+            </div>
+            <div class="row">
+                <div class="col text-right text-success"><b><h3>Date of Regular: </h3></b></div>
+                <div class="col"> <h4>{{employee.regularity}}</h4></div>
+            </div>
+            <div class="row">
+                <div class="col text-right text-success"><b><h3>Type of Employee: </h3></b></div>
+                <div class="col"> 
+                  <h4>
+                    <div v-if="employee.type == 1">COS</div>
+                    <div v-if="employee.type == 2">JOB ORDER</div>
+                    <div v-if="employee.type == 3">REGULAR</div>
+                    <div v-if="employee.type == 4">CASUAL</div>
+                    <div v-if="employee.type == 5">CONSULTANT</div>
+                  </h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-right text-success"><b><h3>Rank/Position: </h3></b></div>
+                <div class="col"> <h4>{{employee.rank}}</h4></div>
+            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary"  data-dismiss="modal">Close</button>
             </div>

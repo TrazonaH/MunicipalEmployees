@@ -53,14 +53,14 @@ function addEmployee(){
     $gender = $_POST['gender'];
     $address = $_POST['address'];
     $birthdate = $_POST['birthdate'];
-    $id_number = $_POST['id_number'];
+    // $id_number = $_POST['id_number'];
     $date_employed = $_POST['date_employed'];
     $department = $_POST['department'];
     $dir = 'uploads/';
     $img = $dir . $_FILES['emp_img']["name"];
     move_uploaded_file($_FILES['emp_img']['tmp_name'], $img);
-    $query = $con->prepare('INSERT INTO employees(fname,lname,m_i,gender,id_number,birthdate,address,date_of_employment,department,img) VALUES(?,?,?,?,?,?,?,?,?,?)');
-    $query->bind_param('ssssisssss', $fname, $lname, $m_initial, $gender, $id_number, $birthdate, $address, $date_employed,$department,$img);
+    $query = $con->prepare('INSERT INTO employees(fname,lname,m_i,gender,birthdate,address,date_of_employment,department,img) VALUES(?,?,?,?,?,?,?,?,?)');
+    $query->bind_param('sssssssss', $fname, $lname, $m_initial, $gender, $birthdate, $address, $date_employed,$department,$img);
     $query->execute();
     echo 1;
 }
@@ -275,6 +275,53 @@ function editEmergency(){
     $query = $con->prepare('UPDATE emergencynum SET department=?, number=? WHERE em_id=?');
     $query->bind_param('ssi', $department, $number,$id);
     $query->execute();
+}
+
+//display count of different types of employee
+function displayContract(){
+    global $con;
+    $query = $con->prepare("SELECT COUNT(emp_id) as num FROM `employees` WHERE type = 1;");
+    $query->execute();
+    $query->store_result();
+    $query->bind_result( $num);
+    $query->fetch();
+    echo $num;
+}
+function displayjobOrder(){
+    global $con;
+    $query = $con->prepare("SELECT COUNT(emp_id) as num FROM `employees` WHERE type = 2;");
+    $query->execute();
+    $query->store_result();
+    $query->bind_result( $num);
+    $query->fetch();
+    echo $num;
+}
+function displayregular(){
+    global $con;
+    $query = $con->prepare("SELECT COUNT(emp_id) as num FROM `employees` WHERE type = 3;");
+    $query->execute();
+    $query->store_result();
+    $query->bind_result( $num);
+    $query->fetch();
+    echo $num;
+}
+function displaycasual(){
+    global $con;
+    $query = $con->prepare("SELECT COUNT(emp_id) as num FROM `employees` WHERE type = 4;");
+    $query->execute();
+    $query->store_result();
+    $query->bind_result( $num);
+    $query->fetch();
+    echo $num;
+}
+function displayconsultant(){
+    global $con;
+    $query = $con->prepare("SELECT COUNT(emp_id) as num FROM `employees` WHERE type = 5;");
+    $query->execute();
+    $query->store_result();
+    $query->bind_result( $num);
+    $query->fetch();
+    echo $num;
 }
 
 ?>

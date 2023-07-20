@@ -81,14 +81,14 @@
             </div><br>
 
             <div class="row">
-                <div class="col">
+                <!-- <div class="col">
                     <div class="form-group mx-sm-3 mb-2">
                         <label for="id_number" class="col-form-label">
                             <b><h3>ID Number:</h3></b>
                         </label>
                         <div class="col"><input type="text" class="form-control form-control-lg" name="id_number" placeholder="ID Number:" ></div>
                     </div>
-                </div>
+                </div> -->
                 <div class="col">
                     <div class="form-group mx-sm-3 mb-2">
                     <label for="date_employed" class="col-form-label"><b>

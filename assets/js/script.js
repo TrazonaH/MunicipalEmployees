@@ -1,18 +1,7 @@
 
-// import {formatName,Name,displayActiveProducts} from './sample.js';
-// import XLSX from "c:/xampp/htdocs/EMPLOYEE/node_modules/xlsx-style/xlsx"; 
-// import { saveAs } from "../node_modules/file-saver/dist/FileSaver.js";
+
 var app = new Vue({
     el: '#app',
-    // data() {
-    //     return {
-    //       tableData: [
-    //         { name: "John Doe", age: 30, email: "john.doe@example.com" },
-    //         { name: "Jane Smith", age: 25, email: "jane.smith@example.com" },
-    //         // Add more data here if needed
-    //       ],
-    //     };
-    //   },
     data: {
         employees: [],
         employee: {},
@@ -33,11 +22,12 @@ var app = new Vue({
         emergencies: [],
         emergency: {},
 
-        // tableData: [
-        //     { name: "John Doe", age: 30, email: "john.doe@example.com" },
-        //     { name: "Jane Smith", age: 25, email: "jane.smith@example.com" },
-        //     // Add more data here if needed
-        //   ],
+        regularCount: [],
+        casualCount: [],
+        joCount: [],
+        cosCount: [],
+        consultantCount: [],
+
     },      
     computed:{
         resultQuery(){
@@ -60,26 +50,77 @@ var app = new Vue({
         this.displaycos();
         this.displayjo();
         this.displayEmergencyHotline();
+        this.displayregular();
+        this.displayjobOrder();
+        this.displaycasual();
+        this.displayContract();
+        this.displayconsultant();
     },
     methods:{
+        //display counts of different types of employees
+        displayContract: function(){
+            const data = new FormData(); 
+            const vue = this;
+            data.append("fn","displayContract");
+            axios.post('api/employees_api.php',data)
+            .then(function (r){
+                vue.cosCount = r.data;
+            })
+        },
+        displayjobOrder: function(){
+            const data = new FormData(); 
+            const vue = this;
+            data.append("fn","displayjobOrder");
+            axios.post('api/employees_api.php',data)
+            .then(function (r){
+                vue.joCount = r.data;
+            })
+        },
+        displayregular: function(){
+            const data = new FormData(); 
+            const vue = this;
+            data.append("fn","displayregular");
+            axios.post('api/employees_api.php',data)
+            .then(function (r){
+                vue.regularCount = r.data;
+            })
+        },
+        displaycasual: function(){
+            const data = new FormData(); 
+            const vue = this;
+            data.append("fn","displaycasual");
+            axios.post('api/employees_api.php',data)
+            .then(function (r){
+                vue.casualCount = r.data;
+            })
+        },
+        displayconsultant: function(){
+            const data = new FormData(); 
+            const vue = this;
+            data.append("fn","displayconsultant");
+            axios.post('api/employees_api.php',data)
+            .then(function (r){
+                vue.consultantCount = r.data;
+            })
+        },
 
         //for the extraction of table to excel file
         exportToExcel: function() {
-            for (let i = 0; i < this.employees.length; i++) {
-                console.log(this.employees[i].fname)
-              }
+            // for (let i = 0; i < this.employees.length; i++) {
+            //     console.log(this.employees[i].fname)
+            //   }
 
-        //     const dataToExport = [...this.employees];
+            const dataToExport = [...this.employees];
 
-        //   // Convert data to Excel format
-        //   const wb = XLSX.utils.book_new();
-        //   const ws = XLSX.utils.json_to_sheet(dataToExport);
-        //   XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+          // Convert data to Excel format
+          const wb = XLSX.utils.book_new();
+          const ws = XLSX.utils.json_to_sheet(dataToExport);
+          XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
 
-        //   // Generate a Blob and trigger download
-        //   const wbout = XLSX.write(wb, { bookType: "xlsx", type: "array" });
-        //   const blob = new Blob([wbout], { type: "application/octet-stream" });
-        //   saveAs(blob, "table_data.xlsx");
+          // Generate a Blob and trigger download
+          const wbout = XLSX.write(wb, { bookType: "xlsx", type: "array" });
+          const blob = new Blob([wbout], { type: "application/octet-stream" });
+          saveAs(blob, "table_data.xlsx");
           },
 
         //Employees Modules

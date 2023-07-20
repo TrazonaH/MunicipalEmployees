@@ -196,6 +196,9 @@
                                 <option value="">Select Type...</option>
                                 <option value="1">COS</option>
                                 <option value="2">JOB ORDER</option>
+                                <option value="3">Regular</option>
+                                <option value="4">Casual</option>
+                                <option value="5">Consultant</option>
                             </select>    
                             <!-- <input type="text" class="form-control form-control-lg" name="type" v-model="employee.type"  > -->
                         </div>

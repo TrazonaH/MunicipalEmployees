@@ -41,7 +41,13 @@
                         <td class="kt-table-cell text-center">{{ employee.birthdate}}</td>
                         <td class="kt-table-cell text-center">{{ employee.date_of_employment }}</td>
 						<td class="kt-table-cell text-center">{{ employee.department }}</td>
-						<td class="kt-table-cell text-center">{{ employee.type }}</td>
+						<td class="kt-table-cell text-center">
+							<div v-if="employee.type == 1">COS</div>
+							<div v-if="employee.type == 2">JOB ORDER</div>
+							<div v-if="employee.type == 3">REGULAR</div>
+							<div v-if="employee.type == 4">CASUAL</div>
+							<div v-if="employee.type == 5">CONSULTANT</div>
+						</td>
  						<td class="kt-table-cell text-center">
 						 	<span><i class="fa-solid fa-trash" style="color: red;" @click='deleteEmployee(employee.emp_id)'></i></span>
  							<span><i class="fa-solid fa-pen-to-square" style="color: #1b470b;" @click='getEmployeesById(JSON.parse(JSON.stringify(employee)))' data-target='#editEmployeesModal' data-toggle='modal'></i></span>
