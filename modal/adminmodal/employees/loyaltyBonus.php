@@ -5,6 +5,7 @@
  			<div class="col-10">
  				<h1 class="modal-title fs-5 text-success" id="staticBackdropLabel"><b>Loyalty Bonus This Year</b></h1>
  			</div>
+			 <div class="col-2"><button class="btn btn-success" @click="exportToExcelLoyalty">Export to Excel</button></div>
  		</div>
  		<div class="modal-body table-responsive ">
  			<table class="table table-bordered ">

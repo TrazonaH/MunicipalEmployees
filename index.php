@@ -4,9 +4,7 @@ include('header/adminheader.php');
 <!-- <div class="content d-flex flex-column flex-column-fluid" id="tc_content" style="margin-top: -70px;"> -->
 <div id="tc_content" style="margin-top: -30px;">
 	<!--begin::Entry-->
-	<div class="d-flex flex-column-fluid" v-if="pageName == 'default'">
-		<div class="container-fluid">
-			<div class="row" style="padding: 10px;">
+	<div class="row" style="padding: 10px;">
 				<div class="col mx-2" style="background-color: yellow; border-radius: 10px;">
 				<h1 class="text-center" style="background-color: white; margin-top: 5px; border-radius: 10px; padding: 5px;"><b>Regular</b></h1>
 				<div class="text-center" style="background-color: white; margin-top: 5px; border-radius: 10px; padding: 5px;">
@@ -49,6 +47,9 @@ include('header/adminheader.php');
 				</div>
 				</div>
 			</div><br><br>
+	<div class="d-flex flex-column-fluid" v-if="pageName == 'default'">
+		<div class="container-fluid">
+			
  		<div class="row">
 		 <div class="col-2">
 				<h1 class="modal-title fs-5 text-success" id="staticBackdropLabel"><b>EMPLOYEES</b></h1>

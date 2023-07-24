@@ -11,12 +11,34 @@ if (function_exists($fn)) {
 function displayEmployees()
 {
     global $con;
-    $query = $con->prepare("SELECT * FROM employees");
+    $query = $con->prepare("SELECT * FROM employees WHERE status != 2 ");
     $query->execute();
     $result = $query->get_result();
     $data = array();
     while ($r = $result->fetch_array()) {
         $data[] = $r;
+    }
+    echo json_encode($data);
+}
+function displayRegulars(){
+    global $con;
+    $query = $con->prepare("SELECT * FROM employees WHERE type=3 AND status!=2");
+    $query->execute();
+    $result = $query->get_result();
+    $data = array();
+    while ($r = $result->fetch_array()) {
+        $data[] =  ["fname" => $r['fname'],
+        "lname" => $r['lname'],
+        "m_i" => $r['m_i'],
+        "gender" => $r['gender'],
+        "id_number" => $r['id_number'],
+        "endNum" => $r['endNum'],
+        "birthdate" => $r['birthdate'],
+        "department" => $r['department'],
+        "date_of_employment" => $r['date_of_employment'],
+        "casual" => $r['casualty'],
+        "regularity" => $r['regularity'],
+        "rank" => $r['rank']];
     }
     echo json_encode($data);
 }
@@ -28,7 +50,18 @@ function displaycos()
     $result = $query->get_result();
     $data = array();
     while ($r = $result->fetch_array()) {
-        $data[] = $r;
+        $data[] =  ["fname" => $r['fname'],
+        "lname" => $r['lname'],
+        "m_i" => $r['m_i'],
+        "gender" => $r['gender'],
+        "id_number" => $r['id_number'],
+        "endNum" => $r['endNum'],
+        "birthdate" => $r['birthdate'],
+        "department" => $r['department'],
+        "date_of_employment" => $r['date_of_employment'],
+        "casual" => $r['casualty'],
+        "regularity" => $r['regularity'],
+        "rank" => $r['rank']];
     }
     echo json_encode($data);
 }
@@ -40,7 +73,62 @@ function displayjo()
     $result = $query->get_result();
     $data = array();
     while ($r = $result->fetch_array()) {
-        $data[] = $r;
+        $data[] =  ["fname" => $r['fname'],
+        "lname" => $r['lname'],
+        "m_i" => $r['m_i'],
+        "gender" => $r['gender'],
+        "id_number" => $r['id_number'],
+        "endNum" => $r['endNum'],
+        "birthdate" => $r['birthdate'],
+        "department" => $r['department'],
+        "date_of_employment" => $r['date_of_employment'],
+        "casual" => $r['casualty'],
+        "regularity" => $r['regularity'],
+        "rank" => $r['rank']];
+    }
+    echo json_encode($data);
+}
+function displayCasuals(){
+    global $con;
+    $query = $con->prepare("SELECT * FROM employees WHERE type=4 AND status!=2  ORDER BY lname ASC");
+    $query->execute();
+    $result = $query->get_result();
+    $data = array();
+    while ($r = $result->fetch_array()) {
+        $data[] =  ["fname" => $r['fname'],
+        "lname" => $r['lname'],
+        "m_i" => $r['m_i'],
+        "gender" => $r['gender'],
+        "id_number" => $r['id_number'],
+        "endNum" => $r['endNum'],
+        "birthdate" => $r['birthdate'],
+        "department" => $r['department'],
+        "date_of_employment" => $r['date_of_employment'],
+        "casual" => $r['casualty'],
+        "regularity" => $r['regularity'],
+        "rank" => $r['rank']];
+    }
+    echo json_encode($data);
+}
+function displayconsultants(){
+    global $con;
+    $query = $con->prepare("SELECT * FROM employees WHERE type=5 AND status!=2  ORDER BY lname ASC");
+    $query->execute();
+    $result = $query->get_result();
+    $data = array();
+    while ($r = $result->fetch_array()) {
+        $data[] =  ["fname" => $r['fname'],
+        "lname" => $r['lname'],
+        "m_i" => $r['m_i'],
+        "gender" => $r['gender'],
+        "id_number" => $r['id_number'],
+        "endNum" => $r['endNum'],
+        "birthdate" => $r['birthdate'],
+        "department" => $r['department'],
+        "date_of_employment" => $r['date_of_employment'],
+        "casual" => $r['casualty'],
+        "regularity" => $r['regularity'],
+        "rank" => $r['rank']];
     }
     echo json_encode($data);
 }
@@ -280,7 +368,7 @@ function editEmergency(){
 //display count of different types of employee
 function displayContract(){
     global $con;
-    $query = $con->prepare("SELECT COUNT(emp_id) as num FROM `employees` WHERE type = 1;");
+    $query = $con->prepare("SELECT COUNT(emp_id) as num FROM `employees` WHERE type = 1 AND status != 2");
     $query->execute();
     $query->store_result();
     $query->bind_result( $num);
@@ -289,7 +377,7 @@ function displayContract(){
 }
 function displayjobOrder(){
     global $con;
-    $query = $con->prepare("SELECT COUNT(emp_id) as num FROM `employees` WHERE type = 2;");
+    $query = $con->prepare("SELECT COUNT(emp_id) as num FROM `employees` WHERE type = 2 AND status != 2 ");
     $query->execute();
     $query->store_result();
     $query->bind_result( $num);
@@ -298,7 +386,7 @@ function displayjobOrder(){
 }
 function displayregular(){
     global $con;
-    $query = $con->prepare("SELECT COUNT(emp_id) as num FROM `employees` WHERE type = 3;");
+    $query = $con->prepare("SELECT COUNT(emp_id) as num FROM `employees` WHERE type = 3 AND status != 2");
     $query->execute();
     $query->store_result();
     $query->bind_result( $num);
@@ -307,7 +395,7 @@ function displayregular(){
 }
 function displaycasual(){
     global $con;
-    $query = $con->prepare("SELECT COUNT(emp_id) as num FROM `employees` WHERE type = 4;");
+    $query = $con->prepare("SELECT COUNT(emp_id) as num FROM `employees` WHERE type = 4 AND status != 2");
     $query->execute();
     $query->store_result();
     $query->bind_result( $num);
@@ -316,7 +404,7 @@ function displaycasual(){
 }
 function displayconsultant(){
     global $con;
-    $query = $con->prepare("SELECT COUNT(emp_id) as num FROM `employees` WHERE type = 5;");
+    $query = $con->prepare("SELECT COUNT(emp_id) as num FROM `employees` WHERE type = 5 AND status != 2");
     $query->execute();
     $query->store_result();
     $query->bind_result( $num);

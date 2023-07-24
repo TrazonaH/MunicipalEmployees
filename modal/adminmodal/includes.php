@@ -6,7 +6,6 @@
    include('modal/adminmodal/employees/viewMonthly.php');
    include('modal/adminmodal/employees/WeeklyNextMonth.php');
    include('modal/adminmodal/employees/TodayBirthday.php');
-   include('modal/adminmodal/displays/viewEmployees.php');
    include('modal/adminmodal/displays/Accounting.php');
    include('modal/adminmodal/displays/Assessor.php');
    include('modal/adminmodal/displays/BFPpersonnel.php');
@@ -43,8 +42,12 @@
    include('modal/adminmodal/employees/salaryIncrement.php');
    include('modal/adminmodal/employees/loyaltyBonus.php');
    include('modal/adminmodal/employees/StepIncrement.php');
-   include('modal/adminmodal/displays/cos.php');
-   include('modal/adminmodal/displays/jo.php');
+
+   include('modal/adminmodal/types/viewEmployees.php');
+   include('modal/adminmodal/types/cos.php');
+   include('modal/adminmodal/types/jo.php');
+   include('modal/adminmodal/types/casual.php');
+   include('modal/adminmodal/types/consultants.php');
 
 
    include('modal/adminmodal/emergency/updateemergency.php');

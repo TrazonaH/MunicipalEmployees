@@ -16,12 +16,16 @@ var app = new Vue({
         loyaltyBunoses: [],
         loyaltyBunos: {},
         salaryIncremented: [],
+        regulars: [],
         cos: [],
         jo: [],
+        casuals: [],
+        consultants: [],
 
         emergencies: [],
         emergency: {},
 
+        // for counting the employees
         regularCount: [],
         casualCount: [],
         joCount: [],
@@ -47,8 +51,11 @@ var app = new Vue({
         this.showNextMonth();
         this.displayLoyaltyBonus();
         this.displaySalaryIncremented();
+        this.displayRegulars();
         this.displaycos();
         this.displayjo();
+        this.displayCasuals();
+        this.displayconsultants();
         this.displayEmergencyHotline();
         this.displayregular();
         this.displayjobOrder();
@@ -105,12 +112,12 @@ var app = new Vue({
         },
 
         //for the extraction of table to excel file
-        exportToExcel: function() {
+        exportToExcelRegular: function() {
             // for (let i = 0; i < this.employees.length; i++) {
             //     console.log(this.employees[i].fname)
             //   }
 
-            const dataToExport = [...this.employees];
+            const dataToExport = [...this.regulars];
 
           // Convert data to Excel format
           const wb = XLSX.utils.book_new();
@@ -120,7 +127,72 @@ var app = new Vue({
           // Generate a Blob and trigger download
           const wbout = XLSX.write(wb, { bookType: "xlsx", type: "array" });
           const blob = new Blob([wbout], { type: "application/octet-stream" });
-          saveAs(blob, "table_data.xlsx");
+          saveAs(blob, "REGULAR.xlsx");
+          },
+          exportToExcelCOS: function() {
+            const dataToExport = [...this.cos];
+
+          // Convert data to Excel format
+          const wb = XLSX.utils.book_new();
+          const ws = XLSX.utils.json_to_sheet(dataToExport);
+          XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+
+          // Generate a Blob and trigger download
+          const wbout = XLSX.write(wb, { bookType: "xlsx", type: "array" });
+          const blob = new Blob([wbout], { type: "application/octet-stream" });
+          saveAs(blob, "COS.xlsx");
+          },
+          exportToExcelJO: function() {
+            const dataToExport = [...this.jo];
+
+          // Convert data to Excel format
+          const wb = XLSX.utils.book_new();
+          const ws = XLSX.utils.json_to_sheet(dataToExport);
+          XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+
+          // Generate a Blob and trigger download
+          const wbout = XLSX.write(wb, { bookType: "xlsx", type: "array" });
+          const blob = new Blob([wbout], { type: "application/octet-stream" });
+          saveAs(blob, "JOB ORDER.xlsx");
+          },
+          exportToExcelCasual: function() {
+            const dataToExport = [...this.casuals];
+
+          // Convert data to Excel format
+          const wb = XLSX.utils.book_new();
+          const ws = XLSX.utils.json_to_sheet(dataToExport);
+          XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+
+          // Generate a Blob and trigger download
+          const wbout = XLSX.write(wb, { bookType: "xlsx", type: "array" });
+          const blob = new Blob([wbout], { type: "application/octet-stream" });
+          saveAs(blob, "CASUAL.xlsx");
+          },
+          exportToExcelConsultant: function() {
+            const dataToExport = [...this.consultants];
+
+          // Convert data to Excel format
+          const wb = XLSX.utils.book_new();
+          const ws = XLSX.utils.json_to_sheet(dataToExport);
+          XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+
+          // Generate a Blob and trigger download
+          const wbout = XLSX.write(wb, { bookType: "xlsx", type: "array" });
+          const blob = new Blob([wbout], { type: "application/octet-stream" });
+          saveAs(blob, "CONSULTANT.xlsx");
+          },
+          exportToExcelLoyalty: function() {
+            const dataToExport = [...this.loyaltyBunoses];
+
+          // Convert data to Excel format
+          const wb = XLSX.utils.book_new();
+          const ws = XLSX.utils.json_to_sheet(dataToExport);
+          XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+
+          // Generate a Blob and trigger download
+          const wbout = XLSX.write(wb, { bookType: "xlsx", type: "array" });
+          const blob = new Blob([wbout], { type: "application/octet-stream" });
+          saveAs(blob, "Loyalty Awardees.xlsx");
           },
 
         //Employees Modules
@@ -133,27 +205,20 @@ var app = new Vue({
             axios.post('api/employees_api.php',data)
             .then(function (r){
                 vue.employees = r.data;
-                // console.log("Employees");
-                // console.log(vue.employees);
             })
         },
         displayIncrement: function(employee_id){
             const data = new FormData(); 
             const vue = this;
-            console.log(employee_id);
             data.append("fn","displayIncrement");
             data.append("employee_id",employee_id);
             axios.post('api/employees_api.php',data)
             .then(function (r){
                 if (r.data == 1){
-                    // console.log("no data", r.data );
                     vue.increment = 0;
                 }else{
                     vue.increment = r.data;
                 }
-                // console.log(r.data);
-                // vue.increment = r.data;
-                // console.log("increment",vue.increment);
             })
         },
         displayLoyaltyBonus: function(){
@@ -162,7 +227,6 @@ var app = new Vue({
             data.append("fn","displayLoyaltyBonus");
             axios.post('api/employees_api.php',data)
             .then(function (r){
-                // console.log('loyalty', r.data);
                 vue.loyaltyBunoses = r.data;
             })
         },
@@ -172,8 +236,16 @@ var app = new Vue({
             data.append("fn","displaySalaryIncremented");
             axios.post('api/employees_api.php',data)
             .then(function (r){
-                console.log('Incremented People', r.data);
                 vue.salaryIncremented = r.data;
+            })
+        },
+        displayRegulars: function(){
+            const data = new FormData(); 
+            const vue = this;
+            data.append("fn","displayRegulars");
+            axios.post('api/employees_api.php',data)
+            .then(function (r){
+                vue.regulars = r.data;
             })
         },
         displaycos: function(){
@@ -194,8 +266,25 @@ var app = new Vue({
                 vue.jo = r.data;
             })
         },
+        displayCasuals: function(){
+            const data = new FormData(); 
+            const vue = this;
+            data.append("fn","displayCasuals");
+            axios.post('api/employees_api.php',data)
+            .then(function (r){
+                vue.casuals = r.data;
+            })
+        },
+        displayconsultants: function(){
+            const data = new FormData(); 
+            const vue = this;
+            data.append("fn","displayconsultants");
+            axios.post('api/employees_api.php',data)
+            .then(function (r){
+                vue.consultants = r.data;
+            })
+        },
         addEmployee: function(e){
-            console.log("called script");
             e.preventDefault();
             const self = this;
             const data = new FormData(e.currentTarget);
@@ -268,7 +357,6 @@ var app = new Vue({
             const self = this;
             e.preventDefault();
                 const vue = this;
-                console.log("emp id", this.employee.emp_id);
                 const data = new FormData(e.currentTarget);
                 data.append("fn","editEmployee");
                 data.append('emp_id',this.employee.emp_id);
@@ -280,6 +368,16 @@ var app = new Vue({
                     self.displayEmployees();
                     self.showMonthlyBirthdays();
                     self.displayLoyaltyBonus();
+                    self.displayregular();
+                    self.displayjobOrder();
+                    self.displaycasual();
+                    self.displayContract();
+                    self.displayconsultant();
+                    self.displayRegulars();
+                    self.displaycos();
+                    self.displayjo();
+                    self.displayCasuals();
+                    self.displayconsultants();
                     const closeButton = document.querySelector('#closeeditEmployeesModal');
                     closeButton.click();
                     e.target.reset();
@@ -329,7 +427,6 @@ var app = new Vue({
             axios.post('api/employees_api.php',data)
             .then(function (r){
                 vue.monthlyBirthdays = r.data;
-                console.log(vue.monthlyBirthdays);
             })
         },
         showNextMonth: function(){
@@ -339,7 +436,6 @@ var app = new Vue({
             axios.post('api/employees_api.php',data)
             .then(function (r){
                 vue.NextMonths = r.data;
-                console.log(vue.NextMonths);
             })
         },
 
@@ -352,7 +448,6 @@ var app = new Vue({
             axios.post('api/employees_api.php',data)
             .then(function (r){
                 vue.emergencies = r.data;
-                console.log(vue.emergencies);
             })
         },
         addEmergency: function(e){

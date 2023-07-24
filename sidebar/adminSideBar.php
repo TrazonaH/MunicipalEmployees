@@ -40,7 +40,7 @@
 												<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
 											</svg>
 										</span>
-										<span class="nav-text">Employees</span>
+										<span class="nav-text">Regular Employees</span>
 									</a>
 								</li>
 								<li class="nav-item">
@@ -61,6 +61,26 @@
 											</svg>
 										</span>
 										<span class="nav-text">Job Order</span>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="javascript:void(0)" @click="pageName = 'casual'" class="nav-link sub-nav-link">
+										<span class="svg-icon nav-icon d-flex justify-content-center">
+											<svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+												<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+											</svg>
+										</span>
+										<span class="nav-text">Casual</span>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="javascript:void(0)" @click="pageName = 'consultants'" class="nav-link sub-nav-link">
+										<span class="svg-icon nav-icon d-flex justify-content-center">
+											<svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+												<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+											</svg>
+										</span>
+										<span class="nav-text">Consultantss</span>
 									</a>
 								</li>
 							</ul>
@@ -444,7 +464,7 @@
 						<!-- <i class="fa-sharp fa-solid fa-trophy"></i> -->
 						<i class="fa-sharp fa-solid fa-trophy fa-xl" style="color: #08388c;"></i>
 						</span>
-						<span class="nav-text" style="font-size: 18px;">Loyalty Bonus</span>
+						<span class="nav-text" style="font-size: 18px;">Loyalty Awardees</span>
 						<i class="fas fa-chevron-right fa-rotate-90"></i>
 					</a>
 					<div class="collapse nav-collapse" id="bonus" data-parent="#accordion">
